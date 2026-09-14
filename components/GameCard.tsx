@@ -72,7 +72,6 @@ export function GameCard({ game, onSelectGame }: GameCardProps) {
                 {game.title}
               </h3>
             </div>
-            <p className="text-xs text-[#94a3b8] truncate mb-2 font-medium">{game.developer}</p>
             
             {/* Rating, Downloads, Size: Same size, same style, more visible with icons */}
             <div className="flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-[#ffffff] truncate">

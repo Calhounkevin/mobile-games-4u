@@ -112,7 +112,7 @@ export function DownloadModal({ game, onClose }: DownloadModalProps) {
                     {game.title}
                   </h3>
                   <p className="text-xs text-[#94a3b8] truncate mt-0.5">
-                    {game.developer} • <span className="text-[#cbd5e1] font-mono">{game.fileSize}</span>
+                    Package Size: <span className="text-[#38bdf8] font-mono font-bold">{game.fileSize}</span>
                   </p>
                   <div className="flex items-center gap-1.5 mt-1 text-xs text-[#fbbf24] font-bold">
                     <Star className="w-3.5 h-3.5 fill-[#fbbf24]" />
