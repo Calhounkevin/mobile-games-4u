@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+/* Remove Next.js dev indicator/watermark at bottom-left */
+nextjs-portal,
+#nextjs-dev-indicator,
+[data-nextjs-dev-indicator],
+[data-nextjs-toast],
+[data-nextjs-dialog-overlay] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
