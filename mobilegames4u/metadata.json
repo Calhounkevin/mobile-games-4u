@@ -1,6 +1,0 @@
-{
-  "name": "mobilegames4u",
-  "description": "Download verified modded mobile games and APKs for Android & iOS with unlimited gems, coins, and unlocked features.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
