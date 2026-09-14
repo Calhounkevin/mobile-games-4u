@@ -385,16 +385,9 @@ export default function HomePage() {
               <WebsiteLogo size="sm" />
             </Link>
             <div className="flex items-center gap-3 text-xs text-[#94a3b8]">
-              <p>
+              <p className="text-xs text-[#94a3b8]">
                 Official domain: <span className="text-[#10b981] font-mono">{SITE_CONFIG.domain}</span>
               </p>
-              <span>•</span>
-              <Link
-                href="/admin"
-                className="inline-flex items-center gap-1 text-[#38bdf8] hover:text-[#ffffff] transition-colors"
-              >
-                <span>Admin Dashboard</span>
-              </Link>
             </div>
           </div>
 
