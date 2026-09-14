@@ -867,36 +867,61 @@ export default function AdminBlackDashboardPage() {
           </div>
         )}
 
-        {/* Quick Deployment Reference */}
+        {/* Quick Deployment & pSEO Guide Reference */}
         <section className="p-5 sm:p-6 rounded-2xl bg-[#0d1522] border border-[#1b263b] shadow-sm space-y-6">
           <div>
             <h2 className="text-lg font-bold text-[#ffffff] flex items-center gap-2">
               <HelpCircle className="w-5 h-5 text-[#38bdf8]" />
-              Quick Deployment Reference
+              pSEO &amp; Deployment Guide
             </h2>
             <p className="text-xs text-[#94a3b8] mt-1">
-              Your site settings for automated Netlify builds.
+              Step-by-step guide to index all your game URLs in Google and deploy with Netlify.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-[#cbd5e1] leading-relaxed">
-            <div className="p-4 rounded-xl bg-[#121c2c] border border-[#1f2e45] space-y-3">
-              <h3 className="text-sm font-bold text-[#10b981] flex items-center gap-1.5">
-                <Globe className="w-4 h-4" /> Netlify Build Settings
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs text-[#cbd5e1] leading-relaxed">
+            {/* Box 1: pSEO Explained */}
+            <div className="p-4 rounded-xl bg-[#121c2c] border border-[#1f2e45] space-y-2.5">
+              <h3 className="text-sm font-bold text-[#f59e0b] flex items-center gap-1.5">
+                <Sparkles className="w-4 h-4" /> What is pSEO?
               </h3>
-              <div className="p-2.5 rounded bg-[#090e17] font-mono text-[11px] text-[#34d399] space-y-1">
-                <div>Build Command: npm run build</div>
-                <div>Publish Directory: out</div>
+              <p className="text-[#94a3b8] text-[11px] leading-relaxed">
+                <strong>Programmatic SEO</strong> automatically creates hundreds of indexable landing URLs using your game data without making each page manually.
+              </p>
+              <div className="p-2 rounded bg-[#090e17] font-mono text-[10px] text-[#38bdf8]">
+                https://www.mobilegames4u.space/?game=monopoly-go
               </div>
+              <p className="text-[11px] text-[#cbd5e1]">
+                When Google or a player visits that URL, the site opens automatically right on that game&apos;s download window!
+              </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-[#121c2c] border border-[#1f2e45] space-y-3">
+            {/* Box 2: How to Submit Sitemap */}
+            <div className="p-4 rounded-xl bg-[#121c2c] border border-[#1f2e45] space-y-2.5">
+              <h3 className="text-sm font-bold text-[#10b981] flex items-center gap-1.5">
+                <Globe className="w-4 h-4" /> Google Search Console
+              </h3>
+              <p className="text-[#94a3b8] text-[11px] leading-relaxed">
+                Submit your live sitemap so Google indexes all games automatically:
+              </p>
+              <ol className="list-decimal list-inside space-y-1 text-[11px] text-[#cbd5e1]">
+                <li>Go to <strong>search.google.com/search-console</strong></li>
+                <li>Add your domain: <strong>mobilegames4u.space</strong></li>
+                <li>Click <strong>Sitemaps</strong> on the left menu</li>
+                <li>Enter <code className="text-[#10b981]">sitemap.xml</code> and click <strong>Submit</strong></li>
+              </ol>
+            </div>
+
+            {/* Box 3: Netlify Settings */}
+            <div className="p-4 rounded-xl bg-[#121c2c] border border-[#1f2e45] space-y-2.5">
               <h3 className="text-sm font-bold text-[#38bdf8] flex items-center gap-1.5">
-                <Settings className="w-4 h-4" /> DNS Records for Custom Domain
+                <Settings className="w-4 h-4" /> Netlify DNS Settings
               </h3>
               <div className="p-2.5 rounded bg-[#090e17] font-mono text-[11px] text-[#cbd5e1] space-y-1">
-                <div><strong>Type: A</strong> | Name: @ | Value: 75.2.60.5</div>
-                <div><strong>Type: CNAME</strong> | Name: www | Value: your-site.netlify.app</div>
+                <div><strong>Build Command:</strong> npm run build</div>
+                <div><strong>Publish Dir:</strong> out</div>
+                <div className="pt-1 text-[#38bdf8]"><strong>A Record:</strong> @ &rarr; 75.2.60.5</div>
+                <div className="text-[#38bdf8]"><strong>CNAME:</strong> www &rarr; your-site.netlify.app</div>
               </div>
             </div>
           </div>

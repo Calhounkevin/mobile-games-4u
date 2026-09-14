@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, Suspense } from 'react';
 import { GAMES_DATA, GameItem } from '@/lib/games-data';
 import { SITE_CONFIG } from '@/lib/config';
 import { GameCard } from '@/components/GameCard';
@@ -17,15 +17,33 @@ import {
   ChevronDown
 } from 'lucide-react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 
 import { useActiveGames } from '@/lib/storage-store';
 
-export default function HomePage() {
+function HomePageContent() {
   const gamesList = useActiveGames();
+  const searchParams = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedGameForModal, setSelectedGameForModal] = useState<GameItem | null>(null);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+
+  // Auto-open game modal if URL has ?game=slug-or-id (Enables programmatic SEO & direct share links)
+  useEffect(() => {
+    const t = setTimeout(() => {
+      const gameParam = searchParams.get('game');
+      if (gameParam && gamesList.length > 0) {
+        const targetGame = gamesList.find(
+          (g) => g.slug === gameParam || g.id === gameParam || g.title.toLowerCase().replace(/[^a-z0-9]+/g, '-') === gameParam
+        );
+        if (targetGame) {
+          setSelectedGameForModal(targetGame);
+        }
+      }
+    }, 0);
+    return () => clearTimeout(t);
+  }, [searchParams, gamesList]);
 
   // Dynamically extract game genres directly from the actual games in the list
   const dynamicCategories = useMemo(() => {
@@ -410,3 +428,12 @@ export default function HomePage() {
     </div>
   );
 }
+
+export default function HomePage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#0a0f18]" />}>
+      <HomePageContent />
+    </Suspense>
+  );
+}
+
